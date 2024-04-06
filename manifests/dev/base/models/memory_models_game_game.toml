@@ -1,0 +1,20 @@
+kind = "DojoModel"
+class_hash = "0x5ae35e0213832d2c3e53336e28db0b15ca811dc1a35c3be234f4b7787b7fe4e"
+original_class_hash = "0x5ae35e0213832d2c3e53336e28db0b15ca811dc1a35c3be234f4b7787b7fe4e"
+abi = "manifests/dev/abis/base/models/memory_models_game_game.json"
+name = "memory::models::game::game"
+
+[[members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "ended"
+type = "bool"
+key = false
+
+[[members]]
+name = "server_hash"
+type = "felt252"
+key = false

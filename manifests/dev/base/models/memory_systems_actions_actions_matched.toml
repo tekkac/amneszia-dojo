@@ -1,0 +1,20 @@
+kind = "DojoModel"
+class_hash = "0x58a1e70bfbacb83aa38595cdcb1b8bb3d35d8acff870d40f148370e857b5aaa"
+original_class_hash = "0x58a1e70bfbacb83aa38595cdcb1b8bb3d35d8acff870d40f148370e857b5aaa"
+abi = "manifests/dev/abis/base/models/memory_systems_actions_actions_matched.json"
+name = "memory::systems::actions::actions::matched"
+
+[[members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "pos1"
+type = "Vec2"
+key = false
+
+[[members]]
+name = "pos2"
+type = "Vec2"
+key = false
