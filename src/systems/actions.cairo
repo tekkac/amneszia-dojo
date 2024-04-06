@@ -8,7 +8,7 @@ use memory::models::tile::{Tile, Vec2};
 trait IActions {
     fn spawn() -> u32;
     fn join(address: ContractAddress, name: felt252, game_id: u32);
-    fn match_tiles(pos1: Vec2, pos2: Vec2, game_id: u32);
+    fn match_tiles(address: ContractAddress, pos1: Vec2, pos2: Vec2, game_id: u32);
 }
 
 // dojo decorator
@@ -23,18 +23,26 @@ mod actions {
     #[derive(Drop, starknet::Event)]
     enum Event {
         Matched: Matched,
+        Joined: Joined,
     }
 
-    // declaring custom event struct
     #[derive(starknet::Event, Model, Copy, Drop, Serde)]
     struct Matched {
         #[key]
-        player: ContractAddress,
+        game_id: u32,
+        address: ContractAddress,
         pos1: Vec2,
         pos2: Vec2,
     }
 
-    // impl: implement functions specified in trait
+    #[derive(starknet::Event, Model, Copy, Drop, Serde)]
+    struct Joined {
+        #[key]
+        game_id: u32,
+        address: ContractAddress,
+        name: felt252,
+    }
+
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
         fn spawn(world: IWorldDispatcher) -> u32 {
@@ -70,7 +78,26 @@ mod actions {
         fn join(world: IWorldDispatcher, address: ContractAddress, name: felt252, game_id: u32) {
             let player = Player { game_id, address, name, score: 0_u32, };
             set!(world, (player));
+
+            emit!(world, Joined { game_id, address, name });
         }
-        fn match_tiles(pos1: Vec2, pos2: Vec2, game_id: u32) {}
+        fn match_tiles(
+            world: IWorldDispatcher, address: ContractAddress, pos1: Vec2, pos2: Vec2, game_id: u32
+        ) {
+            let mut tile1 = get!(world, (game_id, pos1), (Tile));
+            let mut tile2 = get!(world, (game_id, pos2), (Tile));
+            let mut player = get!(world, (game_id, address), (Player));
+
+            //TODO: Check if the tiles are the same
+            tile1.revealed = true;
+            tile2.revealed = true;
+
+            player.score += 1;
+
+            set!(world, (player));
+            set!(world, (tile1, tile2));
+
+            emit!(world, Matched { game_id, address, pos1, pos2 });
+        }
     }
 }
