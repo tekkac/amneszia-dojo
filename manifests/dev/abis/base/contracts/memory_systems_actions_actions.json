@@ -112,6 +112,10 @@
         "name": "match_tiles",
         "inputs": [
           {
+            "name": "address",
+            "type": "core::starknet::contract_address::ContractAddress"
+          },
+          {
             "name": "pos1",
             "type": "memory::models::tile::Vec2"
           },
@@ -182,9 +186,14 @@
     "kind": "struct",
     "members": [
       {
-        "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress",
+        "name": "game_id",
+        "type": "core::integer::u32",
         "kind": "key"
+      },
+      {
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       },
       {
         "name": "pos1",
@@ -194,6 +203,28 @@
       {
         "name": "pos2",
         "type": "memory::models::tile::Vec2",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "memory::systems::actions::actions::Joined",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "game_id",
+        "type": "core::integer::u32",
+        "kind": "key"
+      },
+      {
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252",
         "kind": "data"
       }
     ]
@@ -211,6 +242,11 @@
       {
         "name": "Matched",
         "type": "memory::systems::actions::actions::Matched",
+        "kind": "nested"
+      },
+      {
+        "name": "Joined",
+        "type": "memory::systems::actions::actions::Joined",
         "kind": "nested"
       }
     ]
