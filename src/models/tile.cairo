@@ -4,11 +4,8 @@ struct Tile {
     game_id: u32,
     #[key]
     position: Vec2,
-    // nft token id
-    tile_id: u32,
-    revealed: bool,
-// commitment to the tile's value
-// hash: felt252
+    hidden: bool,
+    public_key: felt252,
 }
 
 #[derive(Copy, Drop, Serde, Introspect)]
