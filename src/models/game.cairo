@@ -7,4 +7,6 @@ struct Game {
     ended: bool,
     // commitment to the game state?
     server_hash: felt252,
+    g1_x: felt252,
+    g2_x: felt252
 }
