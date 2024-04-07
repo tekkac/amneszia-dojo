@@ -1,9 +1,0 @@
-kind = "DojoContract"
-class_hash = "0x579a6dcd0b5c1e49e68c006ac582a900c901679624f4115c8cc4761464a754"
-original_class_hash = "0x579a6dcd0b5c1e49e68c006ac582a900c901679624f4115c8cc4761464a754"
-base_class_hash = "0x0"
-abi = "manifests/dev/abis/base/contracts/memory_systems_actions_actions.json"
-reads = []
-writes = []
-computed = []
-name = "memory::systems::actions::actions"
