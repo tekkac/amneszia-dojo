@@ -1,13 +1,15 @@
 [package]
 cairo-version = "2.5.4"
 name = "memory"
-version = "0.6.0"
+version = "0.1.0"
+edition = "2023_10"
+authors = ["Tekkac"]
 
 [cairo]
 sierra-replace-ids = true
 
 [scripts]
-migrate = "sozo build && sozo migrate && ./scripts/default_auth.sh"
+migrate = "sozo build && sozo migrate plan && sozo migrate apply && ./scripts/default_auth.sh"
 spawn = "./scripts/spawn.sh"
 
 [dependencies]
