@@ -1,15 +1,15 @@
 # Amneszia dojo contracts
 
 ## About
-Dojo contracts for Amnesia
+Dojo contracts for Amnesia, a multiplayer memory-game with hidden information and zero-knowledg proofs.
 
 ## Actions
- -[x] `spawn`: creates a new board based on a commitment to its tiles
- -[x] `join`: players join a game with a name a Starknet mainnet address
- -[x] `match_tiles`: a player that has gained private information about two matching can prove they did by sending a zero-knowledge proof
- -[ ] `reveal`: ask for a tile to be revealed
- -[ ] `buy_action`: buy an action with $LORDS (can be used to reveal more cards)
- -[ ] `sell`: sell private information you own using MPC and receive $LORDS payment.
+ - [x] `spawn`: creates a new board based on a commitment to its tiles
+ - [x] `join`: players join a game with a name a Starknet mainnet address
+ - [x] `match_tiles`: a player that has gained private information about two matching can prove they did by sending a zero-knowledge proof
+ - [ ] `reveal`: ask for a tile to be revealed
+ - [ ] `buy_action`: buy an action with $LORDS (can be used to reveal more cards)
+ - [ ] `sell`: sell private information you own using MPC and receive $LORDS payment.
 
 
 ## ZK & Hidden info:
